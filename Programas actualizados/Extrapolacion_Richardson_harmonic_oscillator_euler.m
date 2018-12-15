@@ -1,3 +1,4 @@
+addpath ('Funciones y objetos')
 %-------------------Extrapolacion Richardson------------------------------%
 n = 2000000;
 
