@@ -14,7 +14,7 @@ figure
 plot(t_1,Error)
 grid on
 xlabel('$t$', 'FontSize',14,'Interpreter','latex')
-ylabel('$E_1$', 'FontSize',14,'Interpreter','latex')
+ylabel('Error entre dos numericas', 'FontSize',14,'Interpreter','latex')
 
 
 
@@ -22,7 +22,7 @@ figure
 plot(t_1,Error_vs_real)
 grid on
 xlabel('$t$', 'FontSize',14,'Interpreter','latex')
-ylabel('$E_1$', 'FontSize',14,'Interpreter','latex')
+ylabel('Error entre numerico y analitico', 'FontSize',14,'Interpreter','latex')
 
 
 figure 
