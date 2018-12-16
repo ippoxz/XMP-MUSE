@@ -6,4 +6,4 @@ La carpeta de programas actualizados incluye una carpeta con los programas actua
 
 Incluido primeros códigos en Python. 
 
-Añadido extrapolación de Richardson en MATLAB para oscilador armónico y se comprueba que el error global es correcto comparando con la solución analítica que con una solución numérica a un paso de tiempo distinto a otra.
+Añadido extrapolación de Richardson en MATLAB para oscilador armónico y se comprueba que el error global es igual comparando con la solución analítica que con una solución numérica a un paso de tiempo distinto a otra.
