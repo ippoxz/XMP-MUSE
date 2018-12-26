@@ -18,7 +18,7 @@ order = 4; %Orden del esquema numerico
 for j = 1:p
 a = pert(j);
 
-U_0_p = [1+a; 0]; %Condicion inicial perturbada
+U_0_p = [1, 0]' + a; %Condicion inicial perturbada
 U_0 = [1, 0]'; %Vector de condiciones iniciales
 
 
@@ -43,7 +43,7 @@ end
 
 
 
-%Representaciones gr·ficas
+%Representaciones gr√°ficas
 
 
 figure 
