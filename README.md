@@ -7,4 +7,6 @@ Se presenta una primera carpeta que contiene los programas y posteriormente un c
 
 Se ha incluido una amplia gama de integradores temporales, los cuales pueden ser elegidos en los programas principales, simplemente seleccionando el deseado como argumento de entrada a Cauchy_Problem.
 
+Para su correcto funcionamiento, descargar la carpeta de MATLAB con todas las subcarpetas dentro y ejecutar los programas de la manera que se encuentran distribuidos en GITHUB
+
 Además, se incluyen algunos de los primeros programas en Python.
