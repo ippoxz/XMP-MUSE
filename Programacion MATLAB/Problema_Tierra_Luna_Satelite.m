@@ -4,7 +4,7 @@ addpath(genpath('Funciones y objetos'))
 
 % Condiciones iniciales satelite
 
-prompt = {'Elija orbita del satelite (1 = caotica, 2 = circular)'};  
+prompt = {'Elija orbita del satelite (1 = caotica, 2 = circular, 3 = eliptica con inclinacion)'};  
 title = 'Selección de órbita';
 num_lines = 1;
 default = {'1'};   
@@ -40,7 +40,30 @@ v_s = U(16:18,:);
 
 %Representacion gr�fica
 
+if Init_orb == 3
+    
+    
+    figure
+plot3(r_L(1,:),r_L(2,:),r_L(3,:))
+grid on
+axis('equal');
+zlim([-0.5 0.5])
+xlabel('$x$', 'FontSize',14,'Interpreter','latex')
+ylabel('$y$', 'FontSize',14,'Interpreter','latex')
+title('Problema Tierra-Luna-Satelite','Interpreter','latex',...
+      'FontSize',12)  
+hold on
+plot3(r_T(1,:),r_T(2,:),r_T(3,:))
 
+hold on 
+comet3(r_s(1,:),r_s(2,:),r_s(3,:))
+
+legend('$Luna$','$Tierra$','$Satelite$')
+set(legend,...
+    'Position',[0.630 0.785 0.204 0.081],...
+    'Interpreter','latex');
+
+else
 figure
 plot(r_L(1,:),r_L(2,:))
 grid on
@@ -59,3 +82,6 @@ legend('$Luna$','$Tierra$','$Satelite$')
 set(legend,...
     'Position',[0.630 0.785 0.204 0.081],...
     'Interpreter','latex');
+
+end
+
