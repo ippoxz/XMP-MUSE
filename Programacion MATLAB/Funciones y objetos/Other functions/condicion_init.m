@@ -19,6 +19,16 @@ function [rs, vs]  = condicion_init(n,M_T)
             vys = sqrt(M_T/xs);
             zs = 0;
             vzs = 0;
+            
+        case 3
+            
+            xs = 0.2;
+            vxs = 0;
+            ys = 0;
+            vys = sqrt(M_T/xs);
+            zs = 0.1;
+            vzs = 0;
+            
     end
     
     rs = [xs ys zs];
