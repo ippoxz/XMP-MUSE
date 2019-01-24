@@ -1,3 +1,5 @@
+addpath(genpath('Funciones y objetos'))
+
 %--------------------Tecnicas de continuacion----------------------------%
 
 f = @(x)(x-3);
