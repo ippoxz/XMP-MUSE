@@ -2,7 +2,7 @@ addpath(genpath('Funciones y objetos'))
 
 %-------------------Estudio de los puntos de Lagrange----------------------%
 
-%ElecciÛn de tiempo y punto de Lagrange a estudiar
+%Elecci√≥n de tiempo y punto de Lagrange a estudiar
 
 prompt = {'Elija tiempo (medido en periodos lunares)'...
     ,'Elija Punto de Lagrange (1-5)'};  
@@ -38,7 +38,7 @@ t = (2*pi*sqrt(r_l^3/G/M_T)+0.01325)*p; %tiempo de simulacion
 
 [U, time] = Cauchy_Problem(U_0, @Tierra_Luna_Satelite, @Dormand_Prince, @time_domain_equalspacing, t, n);
 
-%Transformacion de variables del vector de estado en variables fÌsicas
+%Transformacion de variables del vector de estado en variables f√≠sicas
 
 r_T = U(1:3,:);
 r_L = U(4:6,:);
@@ -47,7 +47,7 @@ v_T = U(10:12,:);
 v_L = U(13:15,:);
 v_s = U(16:18,:);
 
-%Representacion gr·fica
+%Representacion gr√°fica
 
 
 figure(1)
@@ -82,7 +82,7 @@ grid on
 axis('equal');
 xlim([0 1])
 xlabel('$x$', 'FontSize',14,'Interpreter','latex')
-ylabel('$y$', 'FontSize',14,'Interpreter','latex')
+ylabel('$z$', 'FontSize',14,'Interpreter','latex')
 title('Plano de Poincare','Interpreter','latex',...
       'FontSize',12) 
 axis('square')
