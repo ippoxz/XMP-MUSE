@@ -1,0 +1,374 @@
+%% LyX 2.3.1-1 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[spanish]{article}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{luainputenc}
+\usepackage{float}
+\usepackage{graphicx}
+
+\makeatletter
+\@ifundefined{showcaptionsetup}{}{%
+ \PassOptionsToPackage{caption=false}{subfig}}
+\usepackage{subfig}
+\makeatother
+
+\usepackage{babel}
+\addto\shorthandsspanish{\spanishdeactivate{~<>}}
+
+\begin{document}
+\begin{titlepage}
+\begin{center}
+\includegraphics[scale=0.6]{C:/Users/sergio/Desktop/Imágenes/logoMUSE}\vspace{4cm}
+\par\end{center}
+
+\begin{center}
+\textbf{AMPLIACIÓN DE MATEMÁTICAS}
+\par\end{center}
+
+\medskip{}
+
+\begin{center}
+\textbf{CÁLCULO NUMÉRICO\vspace{3cm}
+}
+\par\end{center}
+
+\begin{center}
+\textbf{GRUPO 5:}
+\par\end{center}
+
+\begin{center}
+Luis García Iglesias
+\par\end{center}
+
+\begin{center}
+Javier Luis González Monge
+\par\end{center}
+
+\begin{center}
+Sergio Zambrano Hoyas\textbf{\vspace{2cm}
+}
+\par\end{center}
+
+\begin{center}
+31/01/2019
+\par\end{center}
+
+\end{titlepage}
+
+\tableofcontents{}\pagebreak{}
+
+\section{Introducción}
+
+(Escribir una guía con todos los programas, funciones que requieren,
+etc. Yo diría que en el informe sólo presentemos los resultados obtenidos
+con MATLAB, a falta de saber qué conseguimos con Python).\pagebreak{}
+
+\section{Oscilador armónico}
+
+Se dice que un sistema es un oscilador armónico si, cuando se deja
+fuera de su posición de equilibrio, vuelve hacia ella describiendo
+oscilaciones sinusoidales en torno a dicha posición. Este problema
+es realmente útil para iniciarse en el cálculo numérico, ya que su
+integración es intuitiva y relativamente fácil de resolver. En los
+siguientes subapartados se realizará dicha integración, cuya solución
+es una órbita, con diferentes esquemas numéricos para comparar el
+error obtenido en cada uno de ellos.
+
+\subsection{Prince Dormand}
+
+Este esquema está entre medias del Runge Kutta de orden 5 y 6. Integrando
+el problema con $10^{5}$ pasos y $20\pi$ segundos, equivalente a
+10 vueltas, se obtienen los siguientes resultados:
+
+\begin{figure}[H]
+\subfloat[Órbita.]{\begin{centering}
+\includegraphics[scale=0.3]{C:/Users/sergio/Desktop/Imágenes/Oscilador_Cauchy}
+\par\end{centering}
+
+}\subfloat[Error cometido.]{\begin{centering}
+\includegraphics[scale=0.3]{C:/Users/sergio/Desktop/Imágenes/Error_Oscilador_Cauchy}
+\par\end{centering}
+\begin{centering}
+\par\end{centering}
+}
+
+\caption{Integración del oscilador armónico con Prince Dormand.}
+
+\end{figure}
+
+\subsection{Integrador de MATLAB}
+
+Por otro lado, MATLAB tiene un integrador propio, el ODE45. A continuación
+se presentan los resultados obtenidos al integrar el mismo problema,
+para comparar la solución con la obtenida del esquema anterior:
+
+\begin{figure}[H]
+\subfloat[Órbita.]{\begin{centering}
+\includegraphics[scale=0.3]{C:/Users/sergio/Desktop/Imágenes/Oscilador_ODE45}
+\par\end{centering}
+
+}\subfloat[Error cometido.]{\begin{centering}
+\includegraphics[scale=0.3]{C:/Users/sergio/Desktop/Imágenes/Error_Oscilador_ODE45}
+\par\end{centering}
+
+}
+
+\caption{Integración del oscilador armónico con ODE45.}
+
+\end{figure}
+Se puede observar que el error cometido para este esquema aumenta
+5 órdenes de magnitud con respecto al anterior, a cambio de reducir
+el tiempo computacional considerablemente, que puede ser realmente
+útil a la hora de resolver problemas más complejos. Por último, en
+la siguiente ilustración se muestra la trayectoria en función del
+tiempo, donde se puede observar el movimiento sinusoidal explicado
+anteriormente:
+
+\begin{figure}[H]
+\begin{centering}
+\includegraphics[scale=0.5]{C:/Users/sergio/Desktop/Imágenes/Trayectoria_Oscilador}
+\par\end{centering}
+\caption{Trayectoria del oscilador.}
+
+\end{figure}
+
+\subsection{Euler inverso}
+
+Da un error al ejecutar el código de MATLAB, creo que en el esquema
+no se corresponden las variables de entrada, échale un vistazo Javi.\pagebreak{}
+
+\section{Órbita Kepleriana bidimensional}
+
+Una órbita de Kepler es la trayectoria cónica que sigue un cuerpo
+respecto a otro teniendo en cuenta únciamente la atracción gravitacional
+puntual entre ambos cuerpos despreciando el resto de perturbaciones.
+Resolviendo el problema para el sistema Tierra-Sol, con un Runge Kutta
+de orden 8 y $10^{6}$ pasos durante 10 años, se obtienen los siguientes
+resultados:
+
+\begin{figure}[H]
+\subfloat[Órbita de la Tierra.]{\begin{centering}
+\includegraphics[scale=0.3]{C:/Users/sergio/Desktop/Imágenes/Orbita_Kepleriana}
+\par\end{centering}
+
+}\subfloat[Error cometido.]{\begin{centering}
+\includegraphics[scale=0.3]{C:/Users/sergio/Desktop/Imágenes/Error_Orbita_Kepleriana}
+\par\end{centering}
+
+}
+
+\caption{Órbita Kepleriana.}
+
+\end{figure}
+\pagebreak{}
+
+\section{Extrapolación de Richardson}
+
+La extrapolación de Richardson es un método usado para construir,
+a partir de una secuencia convergente, otra secuencia más rápidamente
+convergente. Esta técnica se usa normalmente para mejorar los resultados
+obtenidos de un método numérico a partir de una estimación previa.
+En los siguientes gráficos se observa el error obtenido para un esquema
+de orden 4, integrando $10^{4}$ pasos durante 100 segundos:
+
+\begin{figure}[H]
+\subfloat[Trayectoria total.]{\begin{centering}
+\includegraphics[scale=0.3]{C:/Users/sergio/Desktop/Imágenes/Richardson}
+\par\end{centering}
+
+}\subfloat[Trayectoria ampliada a 10 segundos.]{\begin{centering}
+\includegraphics[scale=0.3]{C:/Users/sergio/Desktop/Imágenes/Richardson_Ampli}
+\par\end{centering}
+
+}
+
+\caption{Trayectoria del movimiento.}
+
+\end{figure}
+\begin{figure}[H]
+\begin{centering}
+\includegraphics[scale=0.5]{C:/Users/sergio/Desktop/Imágenes/Error_Richardson}
+\par\end{centering}
+\caption{Error cometido con la extrapolación.}
+
+\end{figure}
+\pagebreak{}
+
+\section{Problema de los n-cuerpos}
+
+El problema de los n-cuerpos tiene como objetivo determinar los movimientos
+individuales de un grupo de partículas materiales, ya sean de tamaño
+atómico o astronómico, que interactúan entre ellas siguiendo las leyes
+de la gravitación universal de Newton. La resolución de este problema
+siempre ha estado motivada por el deseo de predecir los movimientos
+del Sol y los planetas, que es además el objetivo de este trabajo.
+En los siguientes apartados se resolverán los casos simplificados
+para dos y tres cuerpos.
+
+\subsection{Dos cuerpos: Tierra-Luna}
+
+En primer lugar, se estudia el caso en el que los dos únicos cuerpos
+que intervienen son la Tierra y la Luna. Los resultados obtenidos
+para el esquema utilizado son los siguientes:
+
+\begin{figure}[H]
+\subfloat[Movimiento de la Tierra y la Luna.]{\begin{centering}
+\includegraphics[scale=0.3]{C:/Users/sergio/Desktop/Imágenes/Dos_cuerpos}
+\par\end{centering}
+
+}\subfloat[Error en la órbita de la Luna.]{\begin{centering}
+\includegraphics[scale=0.3]{C:/Users/sergio/Desktop/Imágenes/Dos_cuerpos_Luna_Error}
+\par\end{centering}
+
+}
+
+\caption{Problema de los dos cuerpos.}
+
+\end{figure}
+\begin{figure}[H]
+\subfloat[Movimiento de la Tierra.]{\begin{centering}
+\includegraphics[scale=0.3]{C:/Users/sergio/Desktop/Imágenes/Dos_cuerpos_Tierra}
+\par\end{centering}
+
+}\subfloat[Error en la órbita de la Tierra.]{\begin{centering}
+\includegraphics[scale=0.3]{C:/Users/sergio/Desktop/Imágenes/Dos_cuerpos_Tierra_Error}
+\par\end{centering}
+
+}
+
+\caption{Órbita de la Tierra.}
+
+\end{figure}
+
+\subsection{Tres cuerpos: Tierra-Luna-Satélite}
+
+Para finalizar, se estudia en este caso el problema de los tres cuerpos,
+incluyendo un satélite de masa despreciable al problema descrito en
+el apartado anterior. Hay tres casos diferentes, en función de la
+órbita que sigue el satélite alrededor de la Tierra. En los siguientes
+gráficos se pueden apreciar las diferencias:
+
+\begin{figure}[H]
+\begin{centering}
+\includegraphics[scale=0.5]{C:/Users/sergio/Desktop/Imágenes/3cuerpos_caotico}
+\par\end{centering}
+\caption{Órbita caótica.}
+
+\end{figure}
+\begin{figure}[H]
+\begin{centering}
+\includegraphics[scale=0.5]{C:/Users/sergio/Desktop/Imágenes/3cuerpos_circular}
+\par\end{centering}
+\caption{Óribita circular.}
+
+\end{figure}
+\begin{figure}[H]
+\begin{centering}
+\includegraphics[scale=0.5]{C:/Users/sergio/Desktop/Imágenes/3cuerpos_eliptica}
+\par\end{centering}
+\caption{Órbita elíptica.}
+
+\end{figure}
+\pagebreak{}
+
+\section{Estabilidad de los puntos de Lagrange}
+
+Los puntos de Lagrange son las cinco posiciones en un sistema orbital
+donde un objeto pequeño afectado sólo por la gravedad, como puede
+ser un satélite, puede estar estacionario respecto a dos objetos más
+grandes, como pueden ser un planeta y el Sol. Esto ocurre debido a
+que el campo gravitatorio de los dos cuerpos grandes se compensa con
+la fuerza centrífuga, permitiendo al cuerpo de masa despreciable mantenerse
+estacionario con respecto a ellos. Otra definición de dichos puntos,
+pero más técnica, es que son las soluciones del problema de los tres
+cuerpos restringido a órbitas circulares.\medskip{}
+
+Las posiciones de dichos puntos en el sistema Sol-Tierra son las siguientes:
+
+\begin{figure}[H]
+\begin{centering}
+\includegraphics[scale=0.5]{C:/Users/sergio/Desktop/Imágenes/PL}
+\par\end{centering}
+\caption{Posición de los puntos de Lagrange.}
+\end{figure}
+En dicha figura se puede apreciar la estabilidad de dichos puntos.
+Los tres puntos que se encuentran en la línea Sol-Tierra son nominalmente
+inestables, aunque es posible encontrar órbitas periódicas estables
+alrededor de esos puntos denominadas órbitas de <<halo>> en el problema
+restringido de los tres cuerpos. En contraparte, los puntos 4 y 5
+son estables siempre que la relación entre ambas masas sea mayor que
+24,96, como son los casos entre el Sol y la Tierra y la Tierra y la
+Luna.\medskip{}
+
+Este último caso, el de la Tierra y la Luna, es el que se estudiará
+en MATLAB, al ser dichos puntos útiles para varias misiones espaciales
+como la del Apollo 11. A continuación se muestran los resultados correspondientes
+a la órbita que sigue un satélite colocado en cada uno de los puntos
+de Lagrange del sistema Tierra-Luna, en una simulación que dura 10
+periodos lunares y en la que se oberva a la perfección el carácter
+de cada uno de los puntos:
+
+\begin{figure}[H]
+\begin{centering}
+\includegraphics[scale=0.5]{C:/Users/sergio/Desktop/Imágenes/L1}
+\par\end{centering}
+\caption{Sátelite orbitando L1.}
+
+\end{figure}
+\begin{figure}[H]
+\begin{centering}
+\includegraphics[scale=0.5]{C:/Users/sergio/Desktop/Imágenes/L2}
+\par\end{centering}
+\caption{Sátelite orbitando L2.}
+
+\end{figure}
+\begin{figure}[H]
+\begin{centering}
+\includegraphics[scale=0.5]{C:/Users/sergio/Desktop/Imágenes/L3}
+\par\end{centering}
+\caption{Sátelite orbitando L3.}
+
+\end{figure}
+\begin{figure}[H]
+\begin{centering}
+\includegraphics[scale=0.5]{C:/Users/sergio/Desktop/Imágenes/L4}
+\par\end{centering}
+\caption{Sátelite orbitando L4.}
+
+\end{figure}
+\begin{figure}[H]
+\begin{centering}
+\includegraphics[scale=0.5]{C:/Users/sergio/Desktop/Imágenes/L5}
+\par\end{centering}
+\caption{Sátelite orbitando L5.}
+
+\end{figure}
+\pagebreak{}
+
+\section{Mapa de Poincaré}
+
+El mapa de Poincaré es la intersección de una órbita periódica en
+el espacio con un plano transversal a dicha órbita, denominado <<sección
+de Poincaré>>. Es una herramienta muy útil para determinar el error
+cometido en el cálculo de órbitas, por lo que se usará dicho mapa
+como método para comprobar la estabilidad de los puntos de Lagrange.
+En los siguientes gráficos, se puede observar el mapa que genera el
+satélite en su órbita en los puntos de Lagrange 1 y 4, donde se aprecia
+que el error es mucho mayor en L1 al ser un punto inestable:
+
+\begin{figure}[H]
+\begin{centering}
+\includegraphics[scale=0.4]{C:/Users/sergio/Desktop/Imágenes/Poincare_L1}
+\par\end{centering}
+\caption{Mapa de Poincaré de L1.}
+
+\end{figure}
+\begin{figure}[H]
+\begin{centering}
+\includegraphics[scale=0.4]{C:/Users/sergio/Desktop/Imágenes/Poincare_L4}
+\par\end{centering}
+\caption{Mapa de Poincaré de L2.}
+
+\end{figure}
+
+\end{document}
